@@ -1,2 +1,2 @@
-# face_recognition
-A simple face recognition app that draws squares around the eyes and the face.
+# smile_detector
+A simple face recognition program that recognizes if a person is smiling, using OpenCV.
