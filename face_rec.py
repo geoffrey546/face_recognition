@@ -2,7 +2,7 @@ import cv2
 #Loading the cascades
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
-
+smile_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_smile.xml')
 #defining the function that will do the directions
 def detect(gray, frame):
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)#we detect faces using this method
@@ -13,6 +13,9 @@ def detect(gray, frame):
         eyes = eye_cascade.detectMultiScale(roi_gray, 1.1, 3)#detects the eys within the range of the face
         for(ex,ey,ew,eh) in eyes:
             cv2.rectangle(roi_color, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+        smiles = eye_cascade.detectMultiScale(roi_gray, 1.1, 3)#detects the eys within the range of the face
+        for(sx,sy,sw,sh) in eyes:
+            cv2.rectangle(roi_color, (sx,sy),(sx+sw,sy+sh),(0,0,255),2)
     return frame
 #doing some face recognizing using the webcam
 video_capture = cv2.VideoCapture(0) #to capture video
